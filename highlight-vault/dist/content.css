@@ -1,0 +1,157 @@
+/* src/content/content.css */
+/* HighlightVault floating popup styles — injected on all pages */
+
+#hv-popup {
+  position: absolute;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  background: rgba(15, 17, 23, 0.95);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  border-radius: 100px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(124, 58, 237, 0.2),
+    0 0 20px rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(6px) scale(0.95);
+  pointer-events: none;
+  transition:
+    opacity 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#hv-popup.hv-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+#hv-popup.hv-hiding {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.95);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+#hv-popup.hv-hidden {
+  display: none;
+}
+
+#hv-popup button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease,
+    color 0.15s ease;
+  white-space: nowrap;
+}
+
+#hv-popup button:hover {
+  background: rgba(124, 58, 237, 0.2);
+  color: #c4b5fd;
+  transform: scale(1.03);
+}
+
+#hv-popup button:active {
+  transform: scale(0.97);
+}
+
+#hv-popup button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#hv-save-btn {
+  color: #a78bfa !important;
+}
+
+#hv-save-btn:hover {
+  background: rgba(124, 58, 237, 0.3) !important;
+  color: #c4b5fd !important;
+}
+
+#hv-dismiss-btn {
+  color: #64748b !important;
+  padding: 5px 8px !important;
+}
+
+#hv-dismiss-btn:hover {
+  background: rgba(100, 116, 139, 0.2) !important;
+  color: #94a3b8 !important;
+}
+
+.hv-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.hv-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hv-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(124, 58, 237, 0.3);
+  flex-shrink: 0;
+}
+
+/* Toast notification */
+.hv-toast {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(15, 17, 23, 0.95);
+  color: #e2e8f0;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.hv-toast.hv-toast-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hv-toast.hv-toast-success {
+  color: #86efac;
+  border-color: rgba(134, 239, 172, 0.3);
+}
+
+.hv-toast.hv-toast-error {
+  color: #fca5a5;
+  border-color: rgba(252, 165, 165, 0.3);
+}
